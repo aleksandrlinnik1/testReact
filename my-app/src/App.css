@@ -1,0 +1,16 @@
+.App {
+  padding: 50px;
+    margin: 0 50px;
+    height: 90vh;
+  }
+    h1 {
+      text-align: center;
+}
+.wrapper {
+  display: flex;
+    justify-content: space-between;
+}
+.leaflet-container {
+  height: 550px;
+    width: 600px;
+}
