@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Avatar } from 'antd';
+import { ApiContext } from '../../api/context';
 
-const Image = ({ image_ref, getImage }) => {
-    const [state, setstate] = useState();
+const Image = ({ image_ref }) => {
+    const { getImage } = useContext(ApiContext);
+    const [src, setSrc] = useState();
 
     useEffect(() => {
-        async function fetchData() {
-            !!image_ref && setstate(await getImage(image_ref));
-        }
+        const fetchData = async () => {
+            if (image_ref) {
+                const image = await getImage(image_ref);
+                setSrc(image);
+            }
+        };
         fetchData();
     }, [image_ref]);
 
-    return <Avatar size={120} src={state} />;
+    return <Avatar size={120} src={src} />;
 };
 
 export default Image;

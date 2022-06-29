@@ -5,13 +5,13 @@ import 'antd/dist/antd.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import floor from './assets/floor.json';
-import { api } from './api/api';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App floor={floor} api={api}/>
-  </React.StrictMode>
+    <React.StrictMode>
+        <App floor={floor} />
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

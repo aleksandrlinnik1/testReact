@@ -2,21 +2,21 @@ import React, { useEffect, useState } from 'react';
 import Image from './Image';
 import { Table } from 'antd';
 
-const People = ({ allPeople, getImage, image_ref }) => {
+const People = ({ people }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        allPeople.length !== 0 && setLoading(false);
-    }, [allPeople]);
+        if (people.length !== 0) {
+            setLoading(false);
+        }
+    }, [people]);
 
     const columns = [
         {
             title: 'Фото',
             dataIndex: 'image_ref',
             key: 'image_ref',
-            render: (text) => (
-                <Image key={text} getImage={getImage} image_ref={text} />
-            ),
+            render: (text) => <Image key={text} image_ref={text} />,
         },
         {
             title: 'ФИО',
@@ -28,7 +28,7 @@ const People = ({ allPeople, getImage, image_ref }) => {
     return (
         <div>
             <Table
-                dataSource={allPeople}
+                dataSource={people}
                 columns={columns}
                 pagination={{ defaultPageSize: 3 }}
                 loading={loading}

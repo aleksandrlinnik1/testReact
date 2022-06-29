@@ -1,4 +1,4 @@
-# React test task [DEMO](https://aleksandrlinnik1.github.io/testReact/)
+# React test task [CLICK](https://aleksandrlinnik1.github.io/testReact/)
 # Task:
 Необходимо создать приложение, содержащее зону отображение плана помещения в правой части экрана (план предоставляется во вложении в формате .geojson) c возможностью его зуммирования.
 Координата левой нижней точки отображения плана относительно карты:

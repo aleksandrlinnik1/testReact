@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
 import Map from './components/Map/Map';
 import People from './components/People/People';
 import { Col, Row } from 'antd';
+import { ApiContext } from './api/context';
 
-const App = ({ floor, api }) => {
-    const { getAllPeople, getImage, login } = api;
+const App = ({ floor }) => {
+    const { getAllPeople, login } = useContext(ApiContext);
 
-    const [allPeople, setAllPeople] = useState([]);
+    const [people, setPeople] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
+        const fetchData = async () => {
             await login();
-            setAllPeople(await getAllPeople());
-        }
+            setPeople(await getAllPeople());
+        };
         fetchData();
     }, []);
 
@@ -21,7 +22,7 @@ const App = ({ floor, api }) => {
         <div className="App">
             <Row className="wrapper">
                 <Col span={10}>
-                    <People allPeople={[...allPeople]} getImage={getImage} />
+                    <People people={[...people]} />
                 </Col>
                 <Col span={11}>
                     <Map floor={floor} />
